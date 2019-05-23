@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h3 style="margin-top: 20px">Add User</h3>
+  <form #userForm="ngForm" (ngSubmit)="processForm()" style="margin-top: 20px">
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" required #fname="ngModel" name="fname" id="fname" class="form-control" [class.is-invalid]="fname.invalid && fname.touched" [(ngModel)]="user.fname">
+        <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">First Name is Required</small>
+    </div>
+
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" required #lname="ngModel" name="lname" id="lname" class="form-control" [class.is-invalid]="lname.invalid && lname.touched" [(ngModel)]="user.lname">
+        <small class="text-danger" [class.d-none]="lname.valid || lname.untouched">Last Name is Required</small>
+    </div>
+
+    <input [disabled]="userForm.form.invalid" type="submit" value="Save" class="btn btn-primary">
+
+  </form>
+</div>
